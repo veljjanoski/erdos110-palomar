@@ -13,7 +13,7 @@ file `FormalConjectures/ErdosProblems/110.lean` at commit
 
 *References:*
 - [dBEr51] de Bruijn, N. G. and Erdős, P., *A colour problem for infinite graphs and a problem in
-  the theory of relations*. Indag. Math. (1951), 369--373.
+  the theory of relations*. Indag. Math. (1951), 371--373.
 -/
 
 @[expose] public section

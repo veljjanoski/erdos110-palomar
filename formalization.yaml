@@ -24,17 +24,20 @@ sources:
       - "N. G. de Bruijn"
       - "P. Erdős"
     type: "article"
-    location: "Indag. Math. 13 (1951), 369-373"
-    relationship: "formalizes"
+    location: "Indag. Math. 13 (1951), 371-373 (= Proc. Kon. Ned. Akad. Wetensch. Ser. A 54)"
+    relationship: "other"
     note: >-
-      The de Bruijn–Erdős theorem: a graph is k-colourable if every finite subgraph is. The
-      statement here is the consequence noted in formal-conjectures and on erdosproblems.com/110.
+      Theorem 1: a graph is k-colourable if every finite subgraph is. The Lean statement is a
+      corollary that the paper does not state; the proof uses Theorem 1 in Mathlib's form
+      (SimpleGraph.nonempty_hom_of_forall_finite_subgraph_hom) plus a minimal-counterexample step.
     license: "unknown"
     author_endorsement: "n/a"
   - title: "Erdős Problem 110"
     type: "web page"
     location: "https://www.erdosproblems.com/110"
-    relationship: "background"
+    relationship: "formalizes"
+    note: >-
+      States that the de Bruijn–Erdős theorem implies the Lean statement.
     license: "unknown"
     author_endorsement: "n/a"
 
@@ -59,7 +62,7 @@ status:
     size of such subgraphs for graphs of chromatic number aleph_1).
   sorry_count: 0
   sorry_in_definitions: 0
-  axioms: []
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
 
 automation:
   methods:
