@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 110: finite subgraphs of every chromatic number (de Bruijn–Erdős)"
+  description: >-
+    A consequence of the de Bruijn–Erdős theorem: if a graph G has infinite chromatic number,
+    then for every n >= 1 it has a finite subgraph with chromatic number exactly n. The proof
+    combines Mathlib's form of the de Bruijn–Erdős compactness theorem with a minimal
+    counterexample argument.
+  authors:
+    - "Daniel Veljjanoski"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Daniel Veljjanoski"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C15", "05C63"]
+
+sources:
+  - title: "A colour problem for infinite graphs and a problem in the theory of relations"
+    authors:
+      - "N. G. de Bruijn"
+      - "P. Erdős"
+    type: "article"
+    location: "Indag. Math. 13 (1951), 369-373"
+    relationship: "formalizes"
+    note: >-
+      The de Bruijn–Erdős theorem: a graph is k-colourable if every finite subgraph is. The
+      statement here is the consequence noted in formal-conjectures and on erdosproblems.com/110.
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Erdős Problem 110"
+    type: "web page"
+    location: "https://www.erdosproblems.com/110"
+    relationship: "background"
+    license: "unknown"
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/google-deepmind/formal-conjectures/blob/a64e959c32c270df4dd0d96d2027481f15750534/FormalConjectures/ErdosProblems/110.lean"
+    relationship: "builds-on"
+    note: >-
+      The statement in Challenge.lean is copied verbatim from formal-conjectures (Apache-2.0),
+      where it is stated with sorry.
+  - id: "https://github.com/leanprover-community/mathlib4/blob/v4.35.0-rc4/Mathlib/Combinatorics/SimpleGraph/Finsubgraph.lean"
+    relationship: "builds-on"
+    note: >-
+      The proof uses Mathlib's SimpleGraph.nonempty_hom_of_forall_finite_subgraph_hom, the
+      compactness theorem for graph homomorphisms into a finite graph, with the complete graph
+      on k colours as target.
+
+status:
+  scope: >-
+    Formalized: if a simple graph G (on any vertex type) has chromatic number infinity, then
+    for every n >= 1 there is a subgraph H of G with finitely many vertices whose chromatic
+    number is exactly n. Not formalized: the main question of Erdős Problem 110 (bounding the
+    size of such subgraphs for graphs of chromatic number aleph_1).
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5 (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted: a Claude Code agent wrote the Lean proof and the metadata, using lake build
+        and #print axioms; the author chose the target, directed the work and checked the
+        statement and the result.
+      cost:
+        wall_time: "about an hour"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    The author selected the statement from formal-conjectures, and an AI agent wrote the proof
+    under the author's direction. The statement was not changed.
+
+fidelity:
+  divergences: >-
+    None known. The statement is a verbatim copy of the formal-conjectures one and uses only
+    Mathlib definitions. As there, the subgraph need not be induced.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "none"
+  notes: >-
+    The proof is checked by the Lean kernel; #print axioms gives only propext,
+    Classical.choice and Quot.sound. A script checked that the statement in Challenge.lean and
+    Solution.lean is identical to the formal-conjectures one. No human mathematical review of
+    the proof beyond the author's.
+
+alignment:
+  namespace: "Erdos110"
+  statements:
+    - source: "Consequence of de Bruijn and Erdős 1951, as stated for Erdős Problem 110"
+      lean: "Erdos110.erdos_110.variants.de_bruijn_erdos"
+      module: "Challenge"
+      status: "proved"
+      note: "Infinite chromatic number implies a finite subgraph of chromatic number n, for every n >= 1."
+
+acknowledgements: >-
+  Mathlib, in particular its compactness theorem for graph homomorphisms; formal-conjectures for
+  the statement; erdosproblems.com.
